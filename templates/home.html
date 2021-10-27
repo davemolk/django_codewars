@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %} 
+<h1>Codewars Companion</h1>
+<div class="centered">
+  <img
+    src="https://media.giphy.com/media/Zg51pFbwzcTcI/giphy.gif"
+    alt="Samurai gets ready"
+  />
+</div>
+
+{% if user.is_authenticated %}
+<p>Welcome {{ user.username }}</p>
+{% endif %}
+
+{% endblock content %}
