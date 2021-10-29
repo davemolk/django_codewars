@@ -1,0 +1,28 @@
+<div hx-target="this" hx-swap="outerHTML">
+    <div class="container">
+        <h2>{{ kata.name }}</h2> 
+        <p>Rank: {{ kata.rank.name }}</p> 
+        <p>Languages: {{ kata.languages }}</p> 
+        <p>Description: {{ kata.description|linebreaksbr }}</p>
+        <p>Tags: {{ kata.tags }}</p> 
+        {% if kata.notes %}
+            <p>Notes: {{ kata.notes|linebreaksbr }}</p> 
+        {% endif %}
+
+        <div>
+        <button class="btn btn-warning"
+        hx-get="{% url 'katas:update_hx' kata.slug %}">
+            Update
+        </button>
+        <button class="btn btn-danger"
+        hx-post="{% url 'katas:delete_hx' kata.slug %}">
+            Delete
+        </button>
+        </div>
+        <div>
+            <a target="_blank" class="btn btn-secondary" href="{{kata.url}}">
+            Visit Codewars
+            </a>
+        </div>
+    </div>
+</div>

@@ -131,3 +131,21 @@ def kata_delete_view(request, slug):
         'kata': kata,
     }
     return render(request, 'katas/delete.html', context)
+
+
+@login_required
+def update_hx(request, slug):
+    kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
+    form = KataForm(request.POST or None, instance=kata)
+    context = {
+        'form': form,
+        'kata': kata,
+    }
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        # TODO
+        # success message
+        return redirect('katas:detail_hx', slug=kata.slug)
+    return render(request, 'katas/partials/kata_form.html', context)
+
+
