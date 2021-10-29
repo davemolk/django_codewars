@@ -64,9 +64,9 @@ def get_katas(request):
 
 @login_required
 def kata_list_view(request):
-    kata_list = Exercise.objects.filter(owner=request.user)
+    katas = Exercise.objects.filter(owner=request.user)
     context = {
-        'kata_list': kata_list,
+        'katas': katas,
     }
     return render(request, 'katas/list.html', context)
 

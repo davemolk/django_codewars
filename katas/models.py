@@ -25,4 +25,4 @@ class Exercise(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('exercise_detail', kwargs={'slug': self.slug})
+        return reverse('katas:detail', kwargs={'slug': self.slug})
