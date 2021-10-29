@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}My Katas{% endblock title %}
+
+{% block content %}
+    <h1>My Katas</h1>
+    {% for kata in katas %}
+
+    <div>
+        <h3><a href="{{ kata.get_absolute_url }}">
+            {{kata.name}}</a>
+        </h3>
+    </div>
+    {% endfor %}
+
+  
+{% endblock content %}

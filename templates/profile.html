@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<h1>Profile</h1>
+
+<h3>Welcome {{user.username}}</h3>
+
+<div>
+    <a class="btn btn-primary" href="{% url 'katas:get_katas' %}">
+        Get Katas
+    </a>
+
+</div>
+
+
+
+{% endblock content %}
