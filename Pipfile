@@ -11,6 +11,7 @@ django-allauth = "==0.42.0"
 django-crispy-forms = "==1.9.2"
 django-autoslug = "==1.9.8"
 requests = "==2.26.0"
+django-extensions = "*"
 
 [dev-packages]
 

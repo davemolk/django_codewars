@@ -9,11 +9,11 @@ class KataAPIForm(forms.ModelForm):
         fields = [
             'name', 
             'cw_id', 
+            'rank',
+            'tags',
+            'url',
             'languages',
             'description',
-            'tags',
-            'rank',
-            'url',
         ]
         model = Exercise
         widgets = {
@@ -32,10 +32,11 @@ class KataForm(forms.ModelForm):
         fields = [
             'name', 
             'cw_id', 
+            'rank',
+            'tags',
+            'url',
             'languages',
             'description',
-            'tags',
-            'rank',
-            'url',
+            'notes',
         ]
         model = Exercise
