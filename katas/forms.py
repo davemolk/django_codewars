@@ -25,3 +25,17 @@ class KataAPIForm(forms.ModelForm):
             'rank': forms.HiddenInput(),
             'url': forms.HiddenInput(),
         }
+
+class KataForm(forms.ModelForm):
+
+    class Meta:
+        fields = [
+            'name', 
+            'cw_id', 
+            'languages',
+            'description',
+            'tags',
+            'rank',
+            'url',
+        ]
+        model = Exercise
