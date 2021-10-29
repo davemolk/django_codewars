@@ -9,8 +9,18 @@
 <h3>Welcome {{user.username}}</h3>
 
 <div>
+    <p>Click "Get Katas" to pull all your katas from Codewars. You can then choose 
+    which to add to your favorites list here. This might take a little while: Codewars
+    says the following about their API:</p>
+    <p class='font-italic'>
+    Codewars API v1 is minimal and inconsistent. It was never actively developed.
+    </p>
+    <p>Want them all? Click the "Store All" button</p>
     <a class="btn btn-primary" href="{% url 'katas:get_katas' %}">
         Get Katas
+    </a>
+    <a class="btn btn-primary" href="#">
+        Store All
     </a>
 
 </div>

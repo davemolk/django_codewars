@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'crispy_forms',
     'django_extensions',
+    'django_htmx',
 
     # local
     'accounts.apps.AccountsConfig',
