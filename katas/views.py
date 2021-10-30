@@ -134,6 +134,15 @@ def kata_delete_view(request, slug):
 
 
 @login_required
+def detail_hx(request, slug):
+    kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
+    context = {
+        'kata': kata,
+    }
+    return render(request, 'katas/partials/detail_hx.html', context)
+
+
+@login_required
 def update_hx(request, slug):
     kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
     form = KataForm(request.POST or None, instance=kata)
@@ -149,3 +158,11 @@ def update_hx(request, slug):
     return render(request, 'katas/partials/kata_form.html', context)
 
 
+@login_required
+def delete_hx(request, slug):
+    kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
+    if request.method == 'POST':
+        kata.delete()
+        # TODO
+        # flash message
+        return HttpResponse('')

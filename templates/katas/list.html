@@ -3,14 +3,15 @@
 {% block title %}My Katas{% endblock title %}
 
 {% block content %}
-    <h1>My Katas</h1>
+    <h1 class="text-center">My Katas</h1>
     {% for kata in katas %}
 
-    <div>
+    {% comment %} <div>
         <h3><a href="{{ kata.get_absolute_url }}">
             {{kata.name}}</a>
         </h3>
-    </div>
+    </div> {% endcomment %}
+    {% include 'katas/partials/detail_hx.html' %}
     {% endfor %}
 
   
