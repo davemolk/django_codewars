@@ -1,14 +1,16 @@
+{% load crispy_forms_tags %}
+
 <div hx-target="this" hx-swap='outerHTML'>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         
         {% if kata %}
         <button type="submit" hx-post="{% url 'katas:update_hx' kata.slug %}" class="btn btn-primary">
             Submit
         </button>
-        <button hx-get="{% url 'katas:detail_hx' kata.slug %}">
+        <button class="btn btn-success" hx-get="{% url 'katas:detail_hx' kata.slug %}">
             Cancel
         </button>
         {% else %}
