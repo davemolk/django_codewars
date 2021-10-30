@@ -3,16 +3,36 @@
 {% block title %}My Katas{% endblock title %}
 
 {% block content %}
-    <h1 class="text-center">My Katas</h1>
-    {% for kata in katas %}
+<h1 class="text-center">My Katas</h1>
+{% for kata in katas %}
 
-    {% comment %} <div>
-        <h3><a href="{{ kata.get_absolute_url }}">
-            {{kata.name}}</a>
-        </h3>
-    </div> {% endcomment %}
-    {% include 'katas/partials/detail_hx.html' %}
-    {% endfor %}
+{% comment %} <div>
+    <h3><a href="{{ kata.get_absolute_url }}">
+        {{kata.name}}</a>
+    </h3>
+</div> {% endcomment %}
+{% include 'katas/partials/detail_hx.html' %}
+{% endfor %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   
 {% endblock content %}

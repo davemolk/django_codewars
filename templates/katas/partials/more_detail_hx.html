@@ -1,18 +1,18 @@
 <div hx-target="this" hx-swap="outerHTML">
     <div class="container">
         <h2>{{ kata.name }}</h2> 
-        {% comment %} <p>Rank: {{ kata.rank }}</p>  {% endcomment %}
+        <p>Rank: {{ kata.rank }}</p> 
         <p>Languages: {{ kata.languages }}</p> 
-        {% comment %} <p>Description: {{ kata.description|linebreaksbr }}</p> {% endcomment %}
+        <p>Description: {{ kata.description|linebreaksbr }}</p>
         <p>Tags: {{ kata.tags }}</p> 
-        {% comment %} {% if kata.notes %}
+        {% if kata.notes %}
             <p>Notes: {{ kata.notes|linebreaksbr }}</p> 
-        {% endif %} {% endcomment %}
+        {% endif %}
 
         <div>
             <button class="btn btn-primary"
-            hx-get="{% url 'katas:more_detail_hx' kata.slug %}">
-                More Details
+            hx-get="{% url 'katas:detail_hx' kata.slug %}">
+                Fewer Details
             </button>
             <button class="btn btn-warning"
             hx-get="{% url 'katas:update_hx' kata.slug %}">

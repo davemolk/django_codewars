@@ -143,6 +143,15 @@ def detail_hx(request, slug):
 
 
 @login_required
+def more_detail_hx(request, slug):
+    kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
+    context = {
+        'kata': kata,
+    }
+    return render(request, 'katas/partials/more_detail_hx.html', context)
+
+
+@login_required
 def update_hx(request, slug):
     kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
     form = KataForm(request.POST or None, instance=kata)
