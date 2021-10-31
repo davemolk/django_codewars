@@ -61,7 +61,7 @@ def get_katas(request):
             kata['description'] = data['description']
             kata['tags'] = ' '.join(data['tags'])
             kata['rank'] = data['rank']
-            kata['url'] = data['url']
+            kata['url'] = data['url'] + '/solutions/'
             
     context = {
         "katas": katas,
@@ -179,6 +179,7 @@ def delete_hx(request, slug):
         return HttpResponse('')
 
 
+@login_required
 def search_view(request):
     query = request.GET.get('q')
     qs = Exercise.objects.filter(owner=request.user).filter(
