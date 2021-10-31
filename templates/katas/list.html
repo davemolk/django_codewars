@@ -6,11 +6,35 @@
 <h1 class="text-center">My Katas</h1>
 
 <div class="container">
-    <form class="form-inline mt-2 mt-md-0" action="{% url 'katas:search' %}"
+    {% comment %} <form class="form-inline mt-2 mt-md-0" action="{% url 'katas:search' %}"
     method="get">
         <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search"
         aria-label="Search">
-    </form>
+    </form> {% endcomment %}
+
+
+    
+<h3> 
+  Search Contacts 
+  {% comment %} <span class="htmx-indicator"> 
+    <img src="/img/bars.svg"/> Searching... 
+   </span>  {% endcomment %}
+</h3>
+<input class="form-control" type="text" 
+       name="search" placeholder="Begin Typing To Search Users..." 
+       hx-post="{% url 'katas:search' %}"
+       hx-trigger="keyup changed delay:500ms" 
+       hx-target="#search-results" 
+       hx-indicator=".htmx-indicator">
+
+
+<div id="search-results">
+</div>
+
+
+{% include 'katas/search_form.html' %}
+
+
 </div>
 {% for kata in katas %}
 

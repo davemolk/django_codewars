@@ -3,7 +3,10 @@
 {% block title %}Search{% endblock title %}
 
 {% block content %} 
-<h1>Search Results</h1>
+<div>
+<h1 class='text-center'>Search Results</h1>
+<a class='btn btn-secondary' href="{% url 'katas:list' %}">Back</a>
+</div>
 {% if kata_list %}
     {% for kata in kata_list %}
         {% include 'katas/partials/detail_hx.html' %}
