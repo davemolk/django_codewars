@@ -189,7 +189,4 @@ def search_view(request):
     context = {
         'katas': qs,
     }
-    # template = "katas/results_view.html"
-    # if request.POST:
-    #     template = "katas/partials/results.html"
     return render(request, "katas/partials/results.html", context)
