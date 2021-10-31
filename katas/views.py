@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.http.response import HttpResponse
 from django.shortcuts import (
     render, 
@@ -6,6 +7,7 @@ from django.shortcuts import (
     get_object_or_404,
 )
 from django.urls import reverse
+from django.views.generic import ListView
 
 from .forms import KataAPIForm, KataForm
 from .models import Exercise
@@ -175,3 +177,17 @@ def delete_hx(request, slug):
         # TODO
         # flash message
         return HttpResponse('')
+
+
+class SeachResultsListView(ListView):
+    model = Exercise
+    template_name = 'katas/partials/search_results.html'
+    context_object_name = 'kata_list'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Exercise.objects.filter(owner=self.request.user).filter(
+            Q(name__icontains=query) | Q(languages__icontains=query)
+            | Q(description__icontains=query) | Q(tags__icontains=query)
+            | Q(rank__icontains=query) | Q(notes__icontains=query)
+        )
