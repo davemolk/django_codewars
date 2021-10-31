@@ -8,7 +8,7 @@
         
         {% if kata %}
         <button type="submit" hx-post="{% url 'katas:update_hx' kata.slug %}" class="btn btn-primary">
-            Submit
+            Save
         </button>
         <button class="btn btn-success" hx-get="{% url 'katas:detail_hx' kata.slug %}">
             Cancel

@@ -31,10 +31,8 @@ class KataForm(forms.ModelForm):
     class Meta:
         fields = [
             'name', 
-            'cw_id', 
             'rank',
             'tags',
-            'url',
             'languages',
             'description',
             'notes',

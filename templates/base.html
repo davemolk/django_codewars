@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
   <body>
-    {% include 'navbar.html' %} 
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock navbar %}
    
     {% block messages %}
         <ul class="fmessages" id="messages-list">
@@ -21,7 +23,7 @@
             {% endfor %}
         {% endif %}
         </ul>
-    {% endblock %}
+    {% endblock messages %}
 
 
 

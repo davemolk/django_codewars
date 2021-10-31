@@ -1,8 +1,0 @@
-{% for kata in katas %}
-    {% comment %} <li><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></li> {% endcomment %}
-    {% include 'katas/partials/detail_hx.html' %}
-{% empty %}
-
-<h5>No results found</h5>
-
-{% endfor %}

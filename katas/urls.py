@@ -11,7 +11,6 @@ from .views import (
     more_detail_hx,
     update_hx,
     delete_hx,
-    # SeachResultsListView,
     search_view,
 )
 
@@ -22,7 +21,6 @@ urlpatterns = [
     path('get-katas/', get_katas, name='get_katas'),
     path('create/', kata_create_view, name='create'),
     path('search/', search_view, name='search'),
-    # path('search/', SeachResultsListView.as_view(), name='search'),
     path('hx/<slug:slug>/update/', update_hx, name='update_hx'),
     path('hx/<slug:slug>/delete/', delete_hx, name='delete_hx'),
     path('hx/<slug:slug>/more/', more_detail_hx, name='more_detail_hx'),

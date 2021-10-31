@@ -179,19 +179,6 @@ def delete_hx(request, slug):
         return HttpResponse('')
 
 
-# class SeachResultsListView(ListView):
-#     model = Exercise
-#     template_name = 'katas/partials/search_results.html'
-#     context_object_name = 'kata_list'
-
-#     def get_queryset(self):
-#         query = self.request.GET.get('q')
-#         return Exercise.objects.filter(owner=self.request.user).filter(
-#             Q(name__icontains=query) | Q(languages__icontains=query)
-#             | Q(description__icontains=query) | Q(tags__icontains=query)
-#             | Q(rank__icontains=query) | Q(notes__icontains=query)
-#         )
-
 def search_view(request):
     query = request.GET.get('q')
     qs = Exercise.objects.filter(owner=request.user).filter(
@@ -202,8 +189,7 @@ def search_view(request):
     context = {
         'katas': qs,
     }
-    template = "katas/results_view.html"
-    if request.POST:
-        context['queryset'] = qs[:5]
-        template = "katas/partials/results.html"
-    return render(request, template, context)
+    # template = "katas/results_view.html"
+    # if request.POST:
+    #     template = "katas/partials/results.html"
+    return render(request, "katas/partials/results.html", context)
