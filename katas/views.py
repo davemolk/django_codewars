@@ -200,7 +200,7 @@ def search_view(request):
         | Q(rank__icontains=query) | Q(notes__icontains=query)
     )
     context = {
-        'queryset': qs,
+        'katas': qs,
     }
     template = "katas/results_view.html"
     if request.POST:
