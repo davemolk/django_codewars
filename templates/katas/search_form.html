@@ -4,7 +4,7 @@
         <input type='text' id='search-query' name='q' value='{{ request.GET.q }}' 
             hx-get="{% url 'katas:search' %}" hx-trigger='keyup changed delay:200ms'
             hx-target='#typeahead-results' class="form-control" 
-            placeholder="Start Typing..." />
+            placeholder="Type to search. Delete text to reset. Have fun and happy coding." />
         
         {% comment %} <input type='submit' /> {% endcomment %}
     </form>

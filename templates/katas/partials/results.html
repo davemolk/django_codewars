@@ -6,7 +6,6 @@
 {% block content %}
 
 <h1 class='text-center'>Search Results</h1>
-<a class="btn btn-secondary" href="{% url 'pages:home' %}">Back</a>
 
 {% for kata in katas %}
     {% include 'katas/partials/detail_hx.html' %}
