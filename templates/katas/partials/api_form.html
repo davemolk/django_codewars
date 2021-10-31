@@ -1,0 +1,17 @@
+<div hx-target="this" hx-swap='outerHTML'>
+
+        <h5>{{kata.name}}</h5>
+       
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name='name' value="{{kata.name}}">
+            <input type="hidden" name='cw_id' value="{{kata.id}}">
+            <input type="hidden" name='languages' value="{{kata.completedLanguages}}">
+            <input type="hidden" name='description' value="{{kata.description}}">
+            <input type="hidden" name='tags' value="{{kata.tags}}">
+            <input type="hidden" name='rank' value="{{kata.rank}}">
+            <input type="hidden" name='url' value="{{kata.url}}">
+            <button class="btn btn-primary btn-sm" type="submit" hx-post=".">Submit</button>
+        </form>
+
+</div>

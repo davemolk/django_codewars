@@ -7,18 +7,7 @@
     {% for kata in katas %}
 
     <div>
-        <p>{{kata.name}}</p>
-        <form method="post">
-        {% csrf_token %}
-        <input type="hidden" name='name' value="{{kata.name}}">
-        <input type="hidden" name='cw_id' value="{{kata.id}}">
-        <input type="hidden" name='languages' value="{{kata.completedLanguages}}">
-        <input type="hidden" name='description' value="{{kata.description}}">
-        <input type="hidden" name='tags' value="{{kata.tags}}">
-        <input type="hidden" name='rank' value="{{kata.rank}}">
-        <input type="hidden" name='url' value="{{kata.url}}">
-        <button class="btn btn-danger btn-sm" type="submit">Submit</button>
-        </form>
+        {% include 'katas/partials/api_form.html' %}
 
     </div>
     {% endfor %}

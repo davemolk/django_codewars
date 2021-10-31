@@ -26,7 +26,8 @@ def get_katas(request):
         kata.save()
         # TODO
         # flash success message and change redirect 
-        return redirect('pages:home')
+        # return redirect('katas:home')
+        return HttpResponse('Success!')
 
     # Users API
     url = f"https://www.codewars.com/api/v1/users/{request.user.username}/code-challenges/completed?"
