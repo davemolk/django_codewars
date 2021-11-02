@@ -18,7 +18,11 @@ import requests
 @login_required
 def get_katas(request):
     form = KataAPIForm(request.POST or None)
-    katas_db = list(Exercise.objects.filter(owner=request.user))
+
+    # filter out katas in db
+    katas_db = Exercise.objects.filter(owner=request.user)
+    katas_db_id = { kata.cw_id: kata.cw_id for kata in katas_db}
+    
     
     if request.method == 'POST' and form.is_valid():
         kata = form.save(commit=False)
@@ -41,16 +45,15 @@ def get_katas(request):
         print(err)
     
     data = r.json()
-    # have name, cw_id, languages at this point
-
+    
+    # (have name, cw_id, languages at this point)
     katas = data['data']
 
+    filtered_katas = []
     # Code Challenges API for additional kata data
     for kata in katas:
-        kata['completedLanguages'] = ','.join(kata['completedLanguages'])
-        # TODO
-        # filter out ones I've already called (NOT WORKING)
-        if kata['name'] not in katas_db:
+        if kata['id'] not in katas_db_id:
+            kata['completedLanguages'] = ','.join(kata['completedLanguages'])
             try:
                 r = requests.get(f"https://www.codewars.com/api/v1/code-challenges/{kata['id']}")
                 r.raise_for_status()
@@ -63,9 +66,10 @@ def get_katas(request):
             kata['tags'] = ' '.join(data['tags'])
             kata['rank'] = data['rank']
             kata['url'] = data['url'] + '/solutions/'
-            
+            filtered_katas.append(kata)
+
     context = {
-        "katas": katas,
+        "filtered_katas": filtered_katas,
         'form': form,
     }
 
