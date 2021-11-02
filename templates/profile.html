@@ -37,6 +37,15 @@
     </div>
 </div>
 
+<div class="text-center">
+    {% if user.has_usable_password %}
+    <a class="m-3 btn btn-dark" href="{% url 'account_change_password' %}">Change Password</a>
+
+    {% else %}
+    <a class="m-3 btn btn-dark" href="{% url 'account_set_password' %}">Set Password</a>
+    {% endif %}
+</div>
+
 
 
 {% endblock content %}
