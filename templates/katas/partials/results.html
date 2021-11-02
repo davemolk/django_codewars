@@ -5,13 +5,13 @@
 
 {% block content %}
 
-<h3 class='text-center mb-4'>Results</h3>
+<h3 class='text-center fw-bold mb-4'>Results</h3>
 
 {% for kata in katas %}
     {% include 'katas/partials/detail_hx.html' %}
 {% empty %}
 
-<h5>Sorry, no results found</h5>
+<h5 class='fw-bold'>Sorry, no results found</h5>
 
 {% endfor %}
 <div style="height: 200px">
