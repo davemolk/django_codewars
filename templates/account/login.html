@@ -20,15 +20,19 @@
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
+        <div>
         <button class="mt-3 btn btn-danger" type='submit'>Log In</button>
+        <a class='mt-3 btn btn-secondary' href="{% url 'account_reset_password' %}">Reset</a>
+        </div>
     </form>
 </div>
 
 <div class="text-center">
     <p class='fs-4'>Want to use your GitHub account?</p>
-    <a class='btn btn-secondary btn-lg' href="{% provider_login_url 'github' %}">
+    <a class='btn btn-dark btn-lg' href="{% provider_login_url 'github' %}">
         <i class="fab fa-github"></i>
     </a>
+</div>
 
 
 {% endblock content %}
