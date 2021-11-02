@@ -13,8 +13,7 @@
 </div>
 
 <div class='text-center'>
-    <h1>Log Out</h1>
-    <p>Are you sure you want to log out?</p>
+    <p class='fs-3'>Are you sure you want to log out?</p>
     <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
         {{ form|crispy }}
