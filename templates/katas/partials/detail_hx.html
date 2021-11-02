@@ -1,30 +1,28 @@
-<div>
 <div hx-target="this" hx-swap="outerHTML">
 
-    <div class="container">
-        <h2>{{ kata.name }}</h2> 
-        <p>Languages: {{ kata.languages }}</p> 
-        <p>Tags: {{ kata.tags }}</p> 
+    <div class='card text-white p-2 mb-3' style="background: #262729">
+        <div class='card-body'>
+            <h5>{{ kata.name }}</h5> 
+            <p>Languages: {{ kata.languages }}</p> 
+            <p>Tags: {{ kata.tags }}</p> 
 
-        <div>
-            <button class="btn btn-primary"
-            hx-get="{% url 'katas:more_detail_hx' kata.slug %}">
-                More Details
-            </button>
-            <button class="btn btn-warning"
-            hx-get="{% url 'katas:update_hx' kata.slug %}">
-                Update
-            </button>
-            <button class="btn btn-danger"
-            hx-post="{% url 'katas:delete_hx' kata.slug %}">
-                Delete
-            </button>
-            <a target="_blank" class="btn btn-secondary" href="{{kata.url}}">
-                Solution
-            </a>
-        
+            <div>
+                <button class="btn btn-primary"
+                hx-get="{% url 'katas:more_detail_hx' kata.slug %}">
+                    More Details
+                </button>
+                <button class="btn btn-warning"
+                hx-get="{% url 'katas:update_hx' kata.slug %}">
+                    Update
+                </button>
+                <button class="btn btn-danger"
+                hx-post="{% url 'katas:delete_hx' kata.slug %}">
+                    Delete
+                </button>
+                <a target="_blank" class="btn btn-secondary" href="{{kata.url}}">
+                    Solution
+                </a>
+            </div>
         </div>
     </div>
-</div>
-
 </div>

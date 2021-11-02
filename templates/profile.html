@@ -1,28 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Profile{% endblock %}
 
 {% block content %}
 
-<h1>Profile</h1>
+<div class="text-center mb-4">
+    <img src="{% static 'images/logo1.png' %}"
+        width="400"
+        height="400"
+    >
+    <div class="p-4 m-4 text-danger">
+        <h1>Welcome {{user.username}}</h1>
+    </div>
+</div>
 
-<h3>Welcome {{user.username}}</h3>
 
 <div>
-    <p>Click "Get Katas" to pull all your katas from Codewars. You can then choose 
-    which to add to your favorites list here. This might take a little while: Codewars
-    says the following about their API:</p>
-    <p class='font-italic'>
-    Codewars API v1 is minimal and inconsistent. It was never actively developed.
-    </p>
-    <p>Want them all? Click the "Store All" button</p>
-    <a class="btn btn-primary" href="{% url 'katas:get_katas' %}">
-        Get Katas
-    </a>
-    <a class="btn btn-primary" href="#">
-        Store All
-    </a>
-
+    <div class="m-4 card text-white">
+        <div class="p-4" style="background: #262729">
+            <p>Click "Get Katas" to pull all your katas from Codewars. You can then choose 
+            which to add to your favorites list here. This might take a little while: Codewars
+            says the following about their API:</p>
+            <p class='font-italic'>
+            Codewars API v1 is minimal and inconsistent. It was never actively developed.
+            </p>
+            <p>Want them all? Click the "Store All" button</p>
+        </div>   
+    </div>
+    <div class="text-center p-4" style="background: #3c3c3c">
+        <a class="btn btn-danger" href="{% url 'katas:get_katas' %}">
+            Get Katas
+        </a>
+        <a class="btn btn-danger" href="#">
+            Store All
+        </a>
+    </div>   
 </div>
 
 
