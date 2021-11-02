@@ -1,12 +1,69 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}About{% endblock title %}
 
 {% block content %}
 
-<h1>Codewars Companion</h1>
+{% if user.is_authenticated %}
 
+<div class="text-center mb-4">
+    <img src="{% static 'images/logo1.png' %}"
+        width="300"
+        height="300"
+    >
+</div>
+
+<div>
+    <div class="m-4 card text-white">
+        <div class="p-4" style="background: #3c3c3c">
+            <p class='fs-3'>Click "Get Katas" to pull all your katas from Codewars. You can then choose 
+            which to add to your favorites list. 
+            </p> 
+            <p class='fs-5'>
+            Note: this might take a little while...the Codewars API v1 is "is minimal and inconsistent" and "was never actively developed."
+            </p>
+            <p>Want them all? Click the "Store All" button</p>
+        </div>   
+    </div>
+    <div class="text-center pt-3">
+    <span class="p-4">
+        <a class="m-3 btn btn-danger" href="{% url 'katas:get_katas' %}">
+            Get Katas
+        </a>
+        <a class="m-3 btn btn-danger" href="#">
+            Store All
+        </a>
+    </span>   
+    </div>
+</div>
+
+{% else %}
+
+<div class='text-center'>
+    <h1 class='m-3 fw-bold'>Codewars Companion</h1>
+
+    <div class='card text-white mt-5 p-2 mb-3' style="background: #3c3c3c">
+        <p class='fs-5 mt-4'>Codewars is a great resource for practicing different coding languages and strategies, 
+        but it lacks any ability to organize your completed katas. Codewars Companion lets you select
+        and save your completed katas to a favorites list, where you can edit them as you wish.
+        Happy coding!
+        </p>
+
+        <div class="text-center pt-3">
+        <span class="p-4">
+            <a class="m-3 btn btn-danger" href="{% url 'account_login' %}">
+                Log In
+            </a>
+            <a class="m-3 btn btn-danger" href="{% url 'account_signup' %}">
+                Sign Up
+            </a>
+        </span>   
+        </div>
+    </div>
 
 </div>
+
+{% endif %}
 
 {% endblock %}

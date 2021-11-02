@@ -11,20 +11,13 @@
             />
           </div>
 
-        <a class="navbar-brand" href="{% url 'pages:home' %}">
-        {% if user.is_authenticated %}
-        <span class="nav-text fw-bold">
-            {{ user.username }}'s Codewar Companion
-        </span>
-        </a>
-        
-        {% else %}
+        <a class="navbar-brand" href="{% url 'pages:home' %}"></a>
+
         <a class="navbar-brand" href="{% url 'pages:home' %}">
         <span class="nav-text fw-bold">
-            Codewar Companion
+            Codewars Companion
         </span>
         </a> 
-        {% endif %}
 
         <!-- toggle button for mobile nav -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,17 +30,17 @@
         <ul class="navbar-nav">
 
             <li class="nav-item">
-            <a class="nav-link nav-text fw-bold" href="{% url 'pages:profile' %}">Profile</a></span>
+            <a class="nav-link nav-text fw-bold" href="{% url 'pages:profile' %}">Profile</a>
             </li>
 
             <li class="nav-item">
-            <a class="nav-link nav-text fw-bold" href="{% url 'katas:list' %}">My Katas</a></span>
+            <a class="nav-link nav-text fw-bold" href="{% url 'pages:about' %}">About</a>
+            </li>
+
+            <li class="nav-item">
+            <a class="nav-link nav-text fw-bold" href="{% url 'katas:list' %}">My Katas</a>
             </li>
             
-            <li class="nav-item">
-            <a class="nav-link nav-text fw-bold" href="#">Create Kata</a>
-            </li>
-
             <li class="nav-item">
             <a class="nav-link nav-text fw-bold" href="{% url 'account_logout' %}">Logout</a>
             </li>

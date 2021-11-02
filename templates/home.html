@@ -5,7 +5,7 @@
 
 {% block content %} 
 <div class='text-center'>
-  <h1>Codewars Companion</h1>
+  <h1 class='m-3 fw-bold'>Codewars Companion</h1>
   <div>
     <img
       src="https://media.giphy.com/media/Zg51pFbwzcTcI/giphy.gif"
@@ -14,7 +14,9 @@
   </div>
 
   {% if user.is_authenticated %}
-  <p>Welcome {{ user.username }}</p>
+  <div class="m-3 text-danger">
+      <h1>Welcome {{user.username}}</h1>
+  </div>
   {% endif %}
 </div>
 
