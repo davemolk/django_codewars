@@ -12,20 +12,6 @@
     {% block navbar %}
       {% include 'navbar.html' %}
     {% endblock navbar %}
-   
-    {% block messages %}
-        <ul class="fmessages" id="messages-list">
-        {% if messages %}
-            {% for message in messages %}
-              <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                
-                {{ message }}
-              </div>
-            {% endfor %}
-        {% endif %}
-        </ul>
-    {% endblock messages %}
-
 
 
     <div class="container">
