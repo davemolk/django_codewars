@@ -6,9 +6,10 @@
    
     {% for kata in filtered_katas %}
 
-    <div>
-        {% include 'katas/partials/api_form.html' %}
-
+    <div class='card text-white p-2 mb-3' style="background: #262729">
+        <div class="card-body">
+            {% include 'katas/partials/api_form.html' %}
+        </div>
     </div>
     {% endfor %}
 

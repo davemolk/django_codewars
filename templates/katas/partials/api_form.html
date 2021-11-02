@@ -1,5 +1,5 @@
 <div hx-target="this" hx-swap='outerHTML'>
-
+    <div>
         <h5>{{kata.name}}</h5>
        
         <form method="post">
@@ -11,7 +11,7 @@
             <input type="hidden" name='tags' value="{{kata.tags}}">
             <input type="hidden" name='rank' value="{{kata.rank}}">
             <input type="hidden" name='url' value="{{kata.url}}">
-            <button class="btn btn-primary btn-sm" type="submit" hx-post=".">Submit</button>
+            <button class="btn btn-secondary btn-sm" type="submit" hx-post=".">Submit</button>
         </form>
-
+    </div>
 </div>
