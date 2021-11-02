@@ -10,19 +10,19 @@
         {% endif %}
 
         <div>
-            <button class="btn btn-info"
+            <button class="btn btn-outline-danger"
             hx-get="{% url 'katas:detail_hx' kata.slug %}">
                 Fewer Details
             </button>
-            <button class="btn btn-warning"
+            <button class="btn btn-outline-warning"
             hx-get="{% url 'katas:update_hx' kata.slug %}">
                 Update
             </button>
-            <button class="btn btn-danger"
+            <button class="btn btn-outline-light"
             hx-post="{% url 'katas:delete_hx' kata.slug %}">
                 Delete
             </button>
-            <a target="_blank" class="btn btn-secondary" href="{{kata.url}}">
+            <a target="_blank" class="btn btn-outline-secondary" href="{{kata.url}}">
                 Solution
             </a>
         

@@ -7,7 +7,7 @@
             <p>Tags: {{ kata.tags }}</p> 
 
             <div>
-                <button class="btn btn-primary"
+                <button class="btn btn-danger"
                 hx-get="{% url 'katas:more_detail_hx' kata.slug %}">
                     More Details
                 </button>
@@ -15,7 +15,7 @@
                 hx-get="{% url 'katas:update_hx' kata.slug %}">
                     Update
                 </button>
-                <button class="btn btn-danger"
+                <button class="btn btn-light"
                 hx-post="{% url 'katas:delete_hx' kata.slug %}">
                     Delete
                 </button>
