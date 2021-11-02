@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class='fw-bold'>Change Your Username</h1>
+    <p class='fs-3'>(make sure to use your Codewars username)
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-danger mt-3">Submit</button>
+    </form>
+</div>
+{% endblock content %}
