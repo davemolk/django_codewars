@@ -187,11 +187,14 @@ def delete_hx(request, slug):
 @login_required
 def search_view(request):
     query = request.GET.get('q')
+    if query == None:
+        query = ''
     qs = Exercise.objects.filter(owner=request.user).filter(
         Q(name__icontains=query) | Q(languages__icontains=query)
         | Q(description__icontains=query) | Q(tags__icontains=query)
         | Q(rank__icontains=query) | Q(notes__icontains=query)
     )
+    
     context = {
         'katas': qs,
     }
