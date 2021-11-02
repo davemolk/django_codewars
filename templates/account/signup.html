@@ -1,15 +1,26 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}Sign Up{% endblock title %}
 
 {% block content %}
-    <h2>Sign Up</h2>
+
+<div class="text-center mb-4">
+    <img src="{% static 'images/logo1.png' %}"
+        width="300"
+        height="300"
+    >
+</div>
+
+<div>
+    <h1 class='fw-bold text-center'>Sign Up</h1>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class='btn btn-primary'>Sign Up</button>
+        <button type="submit" class='text-center mt-3 btn btn-danger'>Sign Up</button>
     </form>
 
+</div>
 
 {% endblock content %}
