@@ -1,3 +1,5 @@
+import requests
+
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http.response import HttpResponse
@@ -6,13 +8,9 @@ from django.shortcuts import (
     redirect,
     get_object_or_404,
 )
-from django.urls import reverse
-from django.views.generic import ListView
 
 from .forms import KataAPIForm, KataForm
 from .models import Exercise
-
-import requests
 
 
 @login_required
@@ -23,14 +21,10 @@ def get_katas(request):
     katas_db = Exercise.objects.filter(owner=request.user)
     katas_db_id = { kata.cw_id: kata.cw_id for kata in katas_db}
     
-    
     if request.method == 'POST' and form.is_valid():
         kata = form.save(commit=False)
         kata.owner = request.user
         kata.save()
-        # TODO
-        # flash success message and change redirect 
-        # return redirect('katas:home')
         return HttpResponse('Success!')
 
     # Users API
@@ -132,8 +126,6 @@ def save_all_katas(request):
     return redirect('katas:list')
 
     
-
-
 @login_required
 def kata_list_view(request):
     katas = Exercise.objects.filter(owner=request.user)
@@ -141,61 +133,6 @@ def kata_list_view(request):
         'katas': katas,
     }
     return render(request, 'katas/list.html', context)
-
-
-@login_required
-def kata_detail_view(request, slug):
-    kata = get_object_or_404(Exercise, owner=request.user, slug=slug)
-    context = {
-        'kata': kata,
-    }
-    return render(request, 'katas/detail.html', context)
-
-
-@login_required
-def kata_create_view(request):
-    form = KataForm(request.POST or None)
-    context = {
-        'form': form,
-    }
-    if request.method == 'POST' and form.is_valid():
-        kata = form.save(commit=False)
-        kata.owner = request.user
-        kata.save()
-        # TODO
-        # flash success message
-        return redirect(kata.get_absolute_url())
-    return render(request, 'katas/create_update.html', context)
-
-
-@login_required
-def kata_update_view(request, slug):
-    kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
-    form = KataForm(request.POST or None, instance=kata)
-    context = {
-        'form': form,
-        'kata': kata,
-    }
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        # TODO
-        # flash success message
-        return redirect('katas:list')
-    return render(request, 'katas/create_update.html', context)
-
-
-@login_required
-def kata_delete_view(request, slug):
-    kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
-    if request.method == 'POST':
-        kata.delete()
-        #TODO
-        # flash success message
-        return redirect('katas:list')
-    context = {
-        'kata': kata,
-    }
-    return render(request, 'katas/delete.html', context)
 
 
 @login_required

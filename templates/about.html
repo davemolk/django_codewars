@@ -7,25 +7,27 @@
 
 {% if user.is_authenticated %}
 
-<div class="text-center mb-5">
+<div class="text-center mb-4">
     <img src="{% static 'images/logo1.png' %}"
-        width="300"
-        height="300"
+        width="280"
+        height="280"
     >
 </div>
 
-<div class='mt-5 p-3'>
+<div class='mt-3 p-3'>
     <div class="m-4 card text-white">
         <div class="p-4 text-center fs-4" style="background: #3c3c3c">
             <p class='mt-2'>Use "Get Katas" to select which completed katas to save.</p> 
             <p>Can't decide? Use "Save All."</p> 
             <p class='fs-5 mt-5'>
-            Please note: the Codewars API v1 is "minimal and inconsistent" and "was never actively developed," so this might take a while...
+            Please note: the Codewars API v1 is "minimal and inconsistent" and 
+            "was never actively developed," so this might take a little while...
             </p>
+            <p class='fs-5'>(make sure you're logged into Codewars for the solutions links to work)</p>
             
         </div>   
     </div>
-    <div class="text-center pt-3">
+    <div class="text-center pt-2">
     <span class="p-4">
         <a class="m-3 btn btn-danger" href="{% url 'katas:get_katas' %}">
             Get Katas
