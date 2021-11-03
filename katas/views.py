@@ -97,6 +97,7 @@ def get_all_katas(request):
     # (have name, cw_id, languages at this point)
     katas = data['data']
 
+    kata_counter = 0
     # Code Challenges API for additional kata data
     for kata in katas:
         kata['completedLanguages'] = ', '.join(kata['completedLanguages'])
@@ -109,7 +110,6 @@ def get_all_katas(request):
             print(err)
         data = r.json()
 
-
         kata['description'] = data['description']
         kata['tags'] = ', '.join(data['tags'])
         kata['rank']= data['rank']['name']
@@ -121,16 +121,13 @@ def get_all_katas(request):
             url=kata['url'], notes=''
         )
         my_kata.save()
+        kata_counter += 1
+        print('kata_counter: ', kata_counter)
+    print('kata_counter2: ', kata_counter)
 
-    # can't i just redirect after the for loop?
-    # no reason to render anything...
+    return redirect('katas:list')
 
-    context = {
-        "katas": katas,
-        'form': form,
-    }
-
-    return render(request, 'katas/from_codewars1.html', context)
+    
 
 
 @login_required
