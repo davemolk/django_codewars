@@ -12,15 +12,15 @@ from .views import (
     update_hx,
     delete_hx,
     search_view,
-    get_all_katas,
+    save_all_katas,
 )
 
 
 app_name='katas'
 urlpatterns = [
     path('', kata_list_view, name='list'),
-    path('get-katas2/', get_all_katas, name='get_katas2'),
     path('get-katas/', get_katas, name='get_katas'),
+    path('save-all-katas/', save_all_katas, name='save_all_katas'),
     path('create/', kata_create_view, name='create'),
     path('search/', search_view, name='search'),
     path('hx/<slug:slug>/update/', update_hx, name='update_hx'),

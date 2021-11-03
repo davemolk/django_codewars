@@ -78,8 +78,12 @@ def get_katas(request):
 
 
 @login_required
-def get_all_katas(request):
+def save_all_katas(request):
     form = KataAPIForm()
+
+    # filter out katas in db
+    katas_db = Exercise.objects.filter(owner=request.user)
+    katas_db_id = { kata.cw_id: kata.cw_id for kata in katas_db}
 
     # Users API
     url = f"https://www.codewars.com/api/v1/users/{request.user.username}/code-challenges/completed?"
@@ -100,30 +104,30 @@ def get_all_katas(request):
     kata_counter = 0
     # Code Challenges API for additional kata data
     for kata in katas:
-        kata['completedLanguages'] = ', '.join(kata['completedLanguages'])
-        try:
-            r = requests.get(f"https://www.codewars.com/api/v1/code-challenges/{kata['id']}")
-            r.raise_for_status()
-        except requests.exceptions.HTTPError as err:
-            # TODO
-            # flash error message and add redirect 
-            print(err)
-        data = r.json()
+        if kata['id'] not in katas_db_id:
+            kata['completedLanguages'] = ', '.join(kata['completedLanguages'])
+            try:
+                r = requests.get(f"https://www.codewars.com/api/v1/code-challenges/{kata['id']}")
+                r.raise_for_status()
+            except requests.exceptions.HTTPError as err:
+                # TODO
+                # flash error message and add redirect 
+                print(err)
+            data = r.json()
 
-        kata['description'] = data['description']
-        kata['tags'] = ', '.join(data['tags'])
-        kata['rank']= data['rank']['name']
-        kata['url'] = data['url'] + '/solutions/'
-        kata['owner'] = request.user
-        my_kata = Exercise.objects.create(name=kata['name'], 
-            owner=kata['owner'], cw_id=kata['id'], languages=kata['completedLanguages'],
-            description=kata['description'], tags=kata['tags'], rank=kata['rank'], 
-            url=kata['url'], notes=''
-        )
-        my_kata.save()
-        kata_counter += 1
-        print('kata_counter: ', kata_counter)
-    print('kata_counter2: ', kata_counter)
+            kata['description'] = data['description']
+            kata['tags'] = ', '.join(data['tags'])
+            kata['rank']= data['rank']['name']
+            kata['url'] = data['url'] + '/solutions/'
+            kata['owner'] = request.user
+            my_kata = Exercise.objects.create(name=kata['name'], 
+                owner=kata['owner'], cw_id=kata['id'], languages=kata['completedLanguages'],
+                description=kata['description'], tags=kata['tags'], rank=kata['rank'], 
+                url=kata['url'], notes=''
+            )
+            my_kata.save()
+            kata_counter += 1
+    print('kata_counter: ', kata_counter)
 
     return redirect('katas:list')
 
