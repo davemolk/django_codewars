@@ -10,7 +10,7 @@ class Exercise(models.Model):
         get_user_model(),
         on_delete=models.CASCADE,
     )
-    name = models.CharField("Kata name", max_length=255)
+    name = models.TextField("Kata name")
     slug = AutoSlugField("Kata Slug",
         unique=True, always_update=False, populate_from='name')
     cw_id = models.CharField("Codewars ID", max_length=255)

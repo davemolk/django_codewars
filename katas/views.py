@@ -78,6 +78,61 @@ def get_katas(request):
 
 
 @login_required
+def get_all_katas(request):
+    form = KataAPIForm()
+
+    # Users API
+    url = f"https://www.codewars.com/api/v1/users/{request.user.username}/code-challenges/completed?"
+    
+    try:
+        r = requests.get(url)
+        r.raise_for_status()
+    except requests.exceptions.HTTPError as err:
+        # TODO
+        # flash error message and add redirect 
+        print(err)
+    
+    data = r.json()
+    
+    # (have name, cw_id, languages at this point)
+    katas = data['data']
+
+    # Code Challenges API for additional kata data
+    for kata in katas:
+        kata['completedLanguages'] = ', '.join(kata['completedLanguages'])
+        try:
+            r = requests.get(f"https://www.codewars.com/api/v1/code-challenges/{kata['id']}")
+            r.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            # TODO
+            # flash error message and add redirect 
+            print(err)
+        data = r.json()
+
+
+        kata['description'] = data['description']
+        kata['tags'] = ', '.join(data['tags'])
+        kata['rank']= data['rank']['name']
+        kata['url'] = data['url'] + '/solutions/'
+        kata['owner'] = request.user
+        my_kata = Exercise.objects.create(name=kata['name'], 
+            owner=kata['owner'], cw_id=kata['id'], languages=kata['completedLanguages'],
+            description=kata['description'], tags=kata['tags'], rank=kata['rank'], 
+            url=kata['url'], notes=''
+        )
+        my_kata.save()
+
+  
+
+    context = {
+        "katas": katas,
+        'form': form,
+    }
+
+    return render(request, 'katas/from_codewars1.html', context)
+
+
+@login_required
 def kata_list_view(request):
     katas = Exercise.objects.filter(owner=request.user)
     context = {
