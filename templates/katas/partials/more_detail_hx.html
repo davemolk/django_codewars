@@ -1,15 +1,17 @@
+{% load markdownify %}
+
 <div hx-target="this" hx-swap="outerHTML">
     <div class='card text-white p-2 mb-3 shadow-lg rounded' style="background: #262729">
-        <h5>{{ kata.name }}</h5> 
-        <p>Rank: {{ kata.rank }}</p> 
-        <p>Languages: {{ kata.languages }}</p> 
-        <p>Description: {{ kata.description|linebreaksbr }}</p>
-        <p>Tags: {{ kata.tags }}</p> 
+        <h5 class='m-1 fw-bold'>{{ kata.name }}</h5> 
+        <p class='m-1 fw-bold'>Rank: {{ kata.rank }}</p> 
+        <p class='m-1 fw-bold'>Languages: {{ kata.languages }}</p> 
+        <p class='m-1 fw-bold'>Description: {{ kata.description|linebreaksbr }}</p>
+        <p class='m-1 fw-bold'>Tags: {{ kata.tags }}</p> 
         {% if kata.notes %}
-            <p>Notes: {{ kata.notes|linebreaksbr }}</p> 
+            <p class='m-1 fw-bold'>Notes: {{ kata.notes|linebreaksbr }}</p> 
         {% endif %}
 
-        <div>
+        <div class='mt-2'>
             <button class="btn btn-outline-danger"
             hx-get="{% url 'katas:detail_hx' kata.slug %}">
                 Fewer Details

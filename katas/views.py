@@ -53,7 +53,7 @@ def get_katas(request):
     # Code Challenges API for additional kata data
     for kata in katas:
         if kata['id'] not in katas_db_id:
-            kata['completedLanguages'] = ','.join(kata['completedLanguages'])
+            kata['completedLanguages'] = ', '.join(kata['completedLanguages'])
             try:
                 r = requests.get(f"https://www.codewars.com/api/v1/code-challenges/{kata['id']}")
                 r.raise_for_status()
@@ -62,9 +62,10 @@ def get_katas(request):
                 # flash error message and add redirect 
                 print(err)
             data = r.json()
+
             kata['description'] = data['description']
-            kata['tags'] = ' '.join(data['tags'])
-            kata['rank'] = data['rank']
+            kata['tags'] = ', '.join(data['tags'])
+            kata['rank']= data['rank']['name']
             kata['url'] = data['url'] + '/solutions/'
             filtered_katas.append(kata)
 
