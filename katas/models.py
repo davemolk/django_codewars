@@ -14,9 +14,9 @@ class Exercise(models.Model):
     slug = AutoSlugField("Kata Slug",
         unique=True, always_update=False, populate_from='name')
     cw_id = models.CharField("Codewars ID", max_length=255)
-    languages = models.CharField("Langauges Used", max_length=255)
+    languages = models.TextField("Langauges Used")
     description = models.TextField("Kata Description")
-    tags = models.CharField("Kata Tags", max_length=255)
+    tags = models.TextField("Kata Tags")
     rank = models.CharField("Kata Rank", max_length=255)
     url = models.URLField("Kata URL", null=True)
     notes = models.TextField(blank=True)

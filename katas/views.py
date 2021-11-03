@@ -122,7 +122,8 @@ def get_all_katas(request):
         )
         my_kata.save()
 
-  
+    # can't i just redirect after the for loop?
+    # no reason to render anything...
 
     context = {
         "katas": katas,
