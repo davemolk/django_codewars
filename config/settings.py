@@ -193,3 +193,6 @@ DEFAULT_FROM_EMAIL = 'djangopracticing@gmail.com'
 
 # whitenoise and static
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# deploy
+SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT", default=True)
