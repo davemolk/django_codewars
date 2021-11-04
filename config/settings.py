@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'katas.apps.KatasConfig',
-    'projects.apps.ProjectsConfig',
 ]
 
 MIDDLEWARE = [
