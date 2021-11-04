@@ -13,6 +13,7 @@ django-autoslug = "==1.9.8"
 requests = "==2.26.0"
 django-extensions = "*"
 django-htmx = "*"
+whitenoise = "==5.1.0"
 
 [dev-packages]
 
