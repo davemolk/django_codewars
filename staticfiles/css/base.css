@@ -1,0 +1,9 @@
+body {
+    min-height: 100%;
+    margin: 0 auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url(/static/images/background.jpg);
+}
