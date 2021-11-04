@@ -1,1 +1,1 @@
-web: gunicorn codewars_companion.wsgi
+web: gunicorn django_codewars.wsgi
