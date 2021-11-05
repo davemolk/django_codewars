@@ -14,7 +14,8 @@
         <h1 class="text-danger fw-bold">Welcome {{user.username}}</h1>
         <div class="m-4 card text-white">
             <div class="p-4 text-center fs-4" style="background: #3c3c3c">
-                <p>Head to the About page to pull some katas from Codewars, or to My Katas to start editing.</p>
+                <p>Head to the <a style="color: white" href="{% url 'pages:about' %}">About</a> page to pull some katas from Codewars, 
+                    or to <a style="color: white" href="{% url 'katas:list' %}">My Katas</a> to start editing.</p>
                 <p class='mt-4'>Need to change something?</p>
                 <div>
                     <a class="btn btn-danger" href="{% url 'pages:username' user.id %}">Change Username</a>
