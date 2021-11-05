@@ -12,15 +12,20 @@
     >
     <div class="m-3">
         <h1 class="text-danger fw-bold">Welcome {{user.username}}</h1>
-        <p class="fs-3">Need to change something?</p>
-        <div>
-            <a class="btn btn-danger" href="{% url 'pages:username' user.id %}">Change Username</a>
-            {% if user.has_usable_password %}
-            <a class="m-3 btn btn-dark" href="{% url 'account_change_password' %}">Change Password</a>
+        <div class="m-4 card text-white">
+            <div class="p-4 text-center fs-4" style="background: #3c3c3c">
+                <p>Head to the About page to pull some katas from Codewars, or to My Katas to start editing.</p>
+                <p class='mt-4'>Need to change something?</p>
+                <div>
+                    <a class="btn btn-danger" href="{% url 'pages:username' user.id %}">Change Username</a>
+                    {% if user.has_usable_password %}
+                    <a class="m-3 btn btn-dark" href="{% url 'account_change_password' %}">Change Password</a>
 
-            {% else %}
-            <a class="m-3 btn btn-dark" href="{% url 'account_set_password' %}">Set Password</a>
-            {% endif %}
+                    {% else %}
+                    <a class="m-3 btn btn-dark" href="{% url 'account_set_password' %}">Set Password</a>
+                    {% endif %}
+                </div>
+            </div>   
         </div>
     </div>
 </div>
