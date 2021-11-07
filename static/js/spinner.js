@@ -1,3 +1,2 @@
 console.log('hello world')
-const spinnerBox
-const dataBox
+const spinnerBox = document.getElementById('spinner-box')
