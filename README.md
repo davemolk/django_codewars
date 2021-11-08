@@ -6,7 +6,7 @@ and save your completed katas to a favorites list, where you can search, edit, a
 
 ## Tech
 
-Codewars Companion is built with Django on the front and back, along with HTMX for in-place form rendering and manipulation. The site currently uses two separate Codewars API endpoints in order to gather the necessary kata information for users. Django Allauth allows you to login through your GitHub account.
+Codewars Companion is built with Django on the front and back, along with HTMX for in-place form rendering and manipulation. The site currently uses two separate Codewars API endpoints in order to gather the necessary kata information for users. Django Allauth allows you to login through your GitHub and Gmail accounts.
 
 ## How to Use
 
