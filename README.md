@@ -15,9 +15,3 @@ Access the live site at https://codewarscompanion.herokuapp.com/ or fork and clo
 ## Future Considerations
 
 This is very much a proof-of-concept and a work-in-progress. There's a sprinkling of JavaScript for the loading spinner that I will convert to HTMX. I have a script that grabs the usernames of the top 500 Codewars users and then compiles a list of any GitHub repos that contain their kata solutions, so a "hints"-type feature might make it in at some point. I might make a crawler that downloads and archives your solutions in the database to make the site more self-sufficient. And of course, improved UX--while the current grit is an homage to Codewars, there are a number of features I'll add in over time.
-
-## Issues
-
-There's an issue with allauth, detailed in the link below, that I will address.
-
-https://stackoverflow.com/questions/24357907/django-allauth-facebook-redirects-to-signup-when-retrieved-email-matches-an-exis
