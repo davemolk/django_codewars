@@ -27,16 +27,29 @@
             
         </div>   
     </div>
-    <div class="text-center pt-2">
-    <span class="p-4">
-        <a class="m-3 btn btn-danger" href="{% url 'katas:get_katas' %}">
-            Get Katas
-        </a>
-        <a class="m-3 btn btn-danger" href="{% url 'katas:save_all_katas' %}">
-            Save All
-        </a>
-    </span>   
+    <div id='spinner-box' class="m-5 text-center not-visible" style="background: #3c3c3c">
+        <span>
+            <div class="spinner-border text-danger p-5 m-3" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </span>  
     </div>
+    <div id="kata-call" class="text-center pt-2">
+        <span class="p-4">
+            <a id="patience" class="patience m-3 btn btn-danger btn-lg" href="{% url 'katas:get_katas' %}">
+                Get Katas
+            </a>
+            <a id="patience2" class="m-3 btn btn-danger btn-lg" href="{% url 'katas:save_all_katas' %}">
+                Save All
+            </a>
+            {% comment %} <a class="m-3 btn btn-danger" href="#" >Click me</a> {% endcomment %}
+        </span>  
+    </div>
+        {% comment %} <div id='spinner-box' class="text-center not-visible" style="background: #3c3c3c">
+            <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div> {% endcomment %}
 </div>
 
 {% else %}

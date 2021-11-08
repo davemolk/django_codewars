@@ -95,7 +95,6 @@ def save_all_katas(request):
     # (have name, cw_id, languages at this point)
     katas = data['data']
 
-    kata_counter = 0
     # Code Challenges API for additional kata data
     for kata in katas:
         if kata['id'] not in katas_db_id:
@@ -120,8 +119,6 @@ def save_all_katas(request):
                 url=kata['url'], notes=''
             )
             my_kata.save()
-            kata_counter += 1
-    print('kata_counter: ', kata_counter)
 
     return redirect('katas:list')
 
