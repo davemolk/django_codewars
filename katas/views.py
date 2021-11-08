@@ -34,8 +34,6 @@ def get_katas(request):
         r = requests.get(url)
         r.raise_for_status()
     except requests.exceptions.HTTPError as err:
-        # TODO
-        # flash error message and add redirect 
         print(err)
     
     data = r.json()
@@ -44,6 +42,7 @@ def get_katas(request):
     katas = data['data']
 
     filtered_katas = []
+
     # Code Challenges API for additional kata data
     for kata in katas:
         if kata['id'] not in katas_db_id:
@@ -52,8 +51,6 @@ def get_katas(request):
                 r = requests.get(f"https://www.codewars.com/api/v1/code-challenges/{kata['id']}")
                 r.raise_for_status()
             except requests.exceptions.HTTPError as err:
-                # TODO
-                # flash error message and add redirect 
                 print(err)
             data = r.json()
 
@@ -86,8 +83,6 @@ def save_all_katas(request):
         r = requests.get(url)
         r.raise_for_status()
     except requests.exceptions.HTTPError as err:
-        # TODO
-        # flash error message and add redirect 
         print(err)
     
     data = r.json()
@@ -103,8 +98,6 @@ def save_all_katas(request):
                 r = requests.get(f"https://www.codewars.com/api/v1/code-challenges/{kata['id']}")
                 r.raise_for_status()
             except requests.exceptions.HTTPError as err:
-                # TODO
-                # flash error message and add redirect 
                 print(err)
             data = r.json()
 
@@ -160,8 +153,6 @@ def update_hx(request, slug):
     }
     if request.method == 'POST' and form.is_valid():
         form.save()
-        # TODO
-        # success message
         return redirect('katas:detail_hx', slug=kata.slug)
     return render(request, 'katas/partials/kata_form.html', context)
 
@@ -171,8 +162,6 @@ def delete_hx(request, slug):
     kata = get_object_or_404(Exercise, slug=slug, owner=request.user)
     if request.method == 'POST':
         kata.delete()
-        # TODO
-        # flash message
         return HttpResponse('')
 
 
