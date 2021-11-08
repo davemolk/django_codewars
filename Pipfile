@@ -15,6 +15,7 @@ django-htmx = "*"
 whitenoise = "==5.1.0"
 environs = {version = "==8.0.0", extras = ["django"]}
 gunicorn = "*"
+markdown = "*"
 
 [dev-packages]
 
