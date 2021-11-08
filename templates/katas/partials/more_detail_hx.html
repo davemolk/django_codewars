@@ -4,7 +4,7 @@
     <div class='card text-white p-2 mb-3 shadow-lg rounded' style="background: #262729">
         <h5 class='m-1 fw-bold'>{{ kata.name }}</h5> 
         <p class='m-1 fw-bold'><span style="color: red">Rank: </span>{{ kata.rank }}</p> 
-        <p class='m-1 fw-bold'><span style="color: red">Languages: </span>{{ kata.languages }}</p> 
+        <p class='m-1 fw-bold'><span style="color: red">Your Languages: </span>{{ kata.languages }}</p> 
         <p class='m-1 fw-bold'><span style="color: red">Description: </span>{{ kata.description|markdown|safe }}</p>
         <p class='m-1 fw-bold'><span style="color: red">Tags: </span>{{ kata.tags }}</p> 
         {% if kata.notes %}
